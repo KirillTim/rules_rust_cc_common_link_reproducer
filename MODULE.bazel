@@ -4,12 +4,17 @@ module(
 )
 
 bazel_dep(name = "rules_cc", version = "0.2.17")
-# bazel_dep(name = "rules_rust", version = "0.71.3")
 bazel_dep(name = "rules_rust", version = "0.73.0")
+git_override(
+    module_name = "rules_rust",
+    commit = "bb4e9e8cf14511e7b9cf7bda3d1c1f277d076e24",
+    remote = "https://github.com/bazelbuild/rules_rust.git",
+)
 
 rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
 rust.toolchain(edition = "2021")
 use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
+
 register_toolchains("//:dummy_cc_toolchain")

@@ -20,3 +20,6 @@ python3 assert_linkage.py
 
 With rules_rust 0.73.0, both use cases reproduce: Rust selects `dummy.a` instead
 of `dummy.so`, and Rust links `link_dep.so` without adding it to runfiles.
+
+With rules_rust `bb4e9e8cf14511e7b9cf7bda3d1c1f277d076e24` only the first use
+case reproduce (Rust selects `dummy.a` instead of `dummy.so`).
